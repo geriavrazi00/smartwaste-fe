@@ -2,7 +2,7 @@
   "message": "hello i18n !!",
   "hello": "Përshëndetje!",
   "auth": {
-		"field-completion-label": "Ju lutem plotësoni e-mail-in dhe fjalëkalimin tuaj",
+		"field-completion-label": "Ju lutem plotësoni e-mail-in dhe fjalëkalimin tuaj!",
     "login": "Hyr",
     "logout": "Dil"
 	},
