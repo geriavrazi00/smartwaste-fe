@@ -1,0 +1,11 @@
+{
+  "message": "hello i18n !!",
+  "hello": "Përshëndetje!",
+  "auth": {
+		"field-completion-label": "Ju lutem plotësoni e-mail-in dhe fjalëkalimin tuaj",
+    "login": "Hyr",
+    "logout": "Dil"
+	},
+  "email-address": "Adresa e-mail",
+  "password": "Fjalëkalimi"
+}

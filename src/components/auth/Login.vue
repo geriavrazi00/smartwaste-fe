@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h1>Përshëndetje!</h1>
-    <p class="subtitle">Ju lutem plotësoni e-mail-in tuaj dhe fjalëkalimin</p>
+    <h1>{{ $t('hello') }}</h1>
+    <p class="subtitle">{{ $t('auth.field-completion-label') }}</p>
     
     <div>
       <div>
-        <label class="lbl">Adresa e-mail</label>
+        <label class="lbl">{{ $t('email-address') }}</label>
         <br>
         <input v-model="email" class="fields">
       </div>
@@ -13,14 +13,14 @@
       <br>
 
       <div>
-        <label class="lbl">Fjalëkalimi</label>
+        <label class="lbl">{{ $t('password') }}</label>
         <br>
         <input v-model="password" type="password" class="fields">
       </div>
 
       <br><br>
 
-      <button class="login">Hyr</button>
+      <button class="login">{{ $t('auth.login') }}</button>
     </div>
   </div>
   
