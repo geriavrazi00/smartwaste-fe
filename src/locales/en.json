@@ -6,6 +6,12 @@
 		"login": "Login",
 		"logout": "Logout"
 	},
+	"validations": {
+		"required": "Value is required",
+		"email": "Value is not a valid email address"
+	  },
 	"email-address": "E-mail address",
-	"password": "Password"
+	"password": "Password",
+  "login-successful": "Login successful",
+  "login-failed": "Login failed"
 }

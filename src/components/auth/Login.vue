@@ -1,45 +1,87 @@
 <template>
-  <div class="row">
-    <div class="col-md-4 offset-md-2 login-container">
-      <h1>{{ $t('hello') }}</h1>
-      <p class="subtitle">{{ $t('auth.field-completion-label') }}</p>
+  <form @submit.prevent="onSubmit">
+    <div class="row">
+      <div class="col-md-4 offset-md-2 login-container">
+        <h1>{{ $t('hello') }}</h1>
+        <p class="subtitle">{{ $t('auth.field-completion-label') }}</p>
 
-      <div>
-        <label class="lbl">{{ $t('email-address') }}</label>
+        <div class="form-group" :class="{ error: v$.form.email.$errors.length }">
+            <label class="lbl">{{ $t('email-address') }}</label>
+            <br>
+            <input v-model="v$.form.email.$model" class="fields custom-input">
+            <!-- error message -->
+            <div class="input-errors" v-for="(error, index) of v$.form.email.$errors" :key="index">
+              <div class="error-msg" v-if="error.$validator === 'required'">{{ $t('validations.required') }}</div>
+              <div class="error-msg" v-if="error.$validator === 'email'">{{ $t('validations.email') }}</div>
+            </div>
+        </div>
+
         <br>
-        <input v-model="email" class="fields custom-input">
+
+        <div class="form-group" :class="{ error: v$.form.password.$errors.length }">
+          <label class="lbl">{{ $t('password') }}</label>
+          <br>
+          <input v-model="v$.form.password.$model" type="password" class="fields custom-input">
+          <!-- error message -->
+          <div class="input-errors" v-for="(error, index) of v$.form.password.$errors" :key="index">
+              <div class="error-msg" v-if="error.$validator === 'required'">{{ $t('validations.required') }}</div>
+          </div>
+        </div>
+
+        <br><br>
+
+        <button class="login">{{ $t('auth.login') }}</button>
       </div>
 
-      <br>
-
-      <div>
-        <label class="lbl">{{ $t('password') }}</label>
-        <br>
-        <input v-model="password" type="password" class="fields custom-input">
+      <div class="col-md-4 img-container">
+        <img class="city-img" src="../../assets/images/downtown.jpg"/> 
       </div>
-
-      <br><br>
-
-      <button class="login">{{ $t('auth.login') }}</button>
     </div>
-
-    <div class="col-md-4 img-container">
-      <img class="city-img" src="../../assets/images/downtown.jpg"/> 
-    </div>
-  </div>
+  </form>
   
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
 export default {
-  props: [],
-  data() {
-  return {
-    email: "",
-      password: ""
-  }
+  setup () {
+    return { v$: useVuelidate() }
   },
-  methods: {}
+  data() {
+    return {
+      form: {
+        email: "",
+        password: ""
+      }
+    }
+  },
+  validations() {
+    return {
+      form: {
+        email: {
+          required, 
+          email 
+        },
+        password: {
+          required
+        },
+      },
+    }
+  },
+  methods: {
+    onSubmit() {
+      this.v$.$touch();
+      if (this.v$.$error) return;
+      // actually submit form
+      this.$swal({
+        icon: 'success',
+        title: this.$t('login-successful'),
+        text: this.$t('login-failed'),
+      });
+    }
+  }
 }
 </script>
 

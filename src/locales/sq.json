@@ -6,6 +6,12 @@
     "login": "Hyr",
     "logout": "Dil"
 	},
+  "validations": {
+    "required": "Fusha është e detyruar",
+    "email": "E-mail-i nuk është në një format të vlefshëm"
+  },
   "email-address": "Adresa e-mail",
-  "password": "Fjalëkalimi"
+  "password": "Fjalëkalimi",
+  "login-successful": "Hyre me sukses",
+  "login-failed": "Nuk hyre me sukses"
 }

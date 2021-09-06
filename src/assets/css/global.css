@@ -191,3 +191,35 @@ body {
   border-bottom: 1px solid #E6F5FB;
   outline: none;
 }
+
+.error-message {
+  color: #cc0033;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 5px 0 0;
+}
+
+.input-group .error-message {
+  display: none;
+}
+
+
+/* Error Styling */
+
+.form-group.error label {
+  color: #cc0033;
+}
+
+.form-group.error .fields {
+  border-bottom: 1px solid #cc0033;
+  outline: none;
+}
+
+.form-group.error.error-message {
+  display: inline-block;
+}
+
+.form-group.error {
+  color: #cc0033;
+}
