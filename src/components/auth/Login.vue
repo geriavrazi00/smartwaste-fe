@@ -73,13 +73,18 @@ export default {
   methods: {
     onSubmit() {
       this.v$.$touch();
-      if (this.v$.$error) return;
+      if (this.v$.$error) {
+        this.$swal({
+          icon: 'error',
+          title: this.$t('error'),
+          text: this.$t('form-validation-failed'),
+        });
+        return;
+      }
       // actually submit form
-      this.$swal({
-        icon: 'success',
-        title: this.$t('login-successful'),
-        text: this.$t('login-failed'),
-      });
+
+      // redirect the page
+      this.$router.push({name: 'Statistics'});
     }
   }
 }

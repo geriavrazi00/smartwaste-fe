@@ -32,15 +32,16 @@
   <button @click.alt="toggleModal">open modal (click + alt)</button>
   <br>
   <button @click="toggleModal2">open modal 2</button> -->
-  <Login/>
+  <!-- <Login/> -->
+  <router-view/>
 </template>
 
 <script>
-import Login from './components/auth/Login.vue'
+// import Login from './components/auth/Login.vue'
 
 export default {
   name: 'App',
-  components: { Login },
+  // components: { Login },
   data() {
     return {
       title: 'My First Vue Project',

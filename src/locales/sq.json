@@ -13,5 +13,7 @@
   "email-address": "Adresa e-mail",
   "password": "Fjalëkalimi",
   "login-successful": "Hyre me sukses",
-  "login-failed": "Nuk hyre me sukses"
+  "login-failed": "Nuk hyre me sukses",
+  "form-validation-failed": "Fushat nuk janë plotësuar saktë!",
+  "error": "Problem"
 }

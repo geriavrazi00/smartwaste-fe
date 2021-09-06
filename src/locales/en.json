@@ -13,5 +13,7 @@
 	"email-address": "E-mail address",
 	"password": "Password",
   "login-successful": "Login successful",
-  "login-failed": "Login failed"
+  "login-failed": "Login failed",
+  "form-validation-failed": "Not all the values are valid!",
+  "error": "Error"
 }
