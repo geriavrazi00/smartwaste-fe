@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "../components/auth/Login.vue";
-import Help from "../components/views/Help.vue";
-import RoutePlan from "../components/views/RoutePlan.vue";
-import Statistics from "../components/views/Statistics.vue";
-import NotFound from "../components/views/errors/NotFound.vue";
+import Login from "../views/auth/Login.vue";
+import Help from "../views/Help.vue";
+import RoutePlan from "../views/RoutePlan.vue";
+import Statistics from "../views/Statistics.vue";
+import NotFound from "../views/errors/NotFound.vue";
 
 const routes = [
 	{
