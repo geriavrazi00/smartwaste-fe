@@ -7,8 +7,13 @@
     "logout": "Dil"
 	},
   "validations": {
-    "required": "Fusha është e detyruar",
+    "required": "Fusha duhet të plotësohet",
     "email": "E-mail-i nuk është në një format të vlefshëm"
+  },
+  "menu": {
+    "statistics": "Statistika",
+    "routeplan": "Plani i rrugës",
+    "help": "Ndihmë"
   },
   "email-address": "Adresa e-mail",
   "password": "Fjalëkalimi",

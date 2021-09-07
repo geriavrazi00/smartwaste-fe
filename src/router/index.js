@@ -16,14 +16,14 @@ const routes = [
 		redirect: '/'
 	},
 	{
-		path: '/routeplan',
-		name: 'RoutePlan',
-		component: RoutePlan
-	},
-	{
 		path: '/statistics',
 		name: 'Statistics',
 		component: Statistics
+	},
+	{
+		path: '/routeplan',
+		name: 'RoutePlan',
+		component: RoutePlan
 	},
 	{
 		path: '/help',

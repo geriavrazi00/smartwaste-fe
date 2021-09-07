@@ -1,5 +1,7 @@
 <template>
-    <p>Help component</p>
+	<div class="container-components">
+		<p>Help component</p>
+	</div>
 </template>
 
 <script>

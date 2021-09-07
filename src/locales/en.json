@@ -9,7 +9,12 @@
 	"validations": {
 		"required": "Value is required",
 		"email": "Value is not a valid email address"
-	  },
+	},
+	"menu": {
+    "statistics": "Statistics",
+    "routeplan": "Routeplan",
+    "help": "Help"
+  },
 	"email-address": "E-mail address",
 	"password": "Password",
   "login-successful": "Login successful",

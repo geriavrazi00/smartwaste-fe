@@ -34,7 +34,7 @@
       </div>
 
       <div class="col-md-4 img-container">
-        <img class="city-img" src="../../assets/images/downtown.jpg"/> 
+        <img class="city-img" src="../../assets/images/smartwaste.png"/> 
       </div>
     </div>
   </form>
@@ -86,7 +86,13 @@ export default {
       // redirect the page
       this.$router.push({name: 'Statistics'});
     }
-  }
+  },
+  created: function () {
+    document.body.className = "login-map-background";
+  },
+  unmounted: function () {
+    document.body.className = null;
+  },
 }
 </script>
 

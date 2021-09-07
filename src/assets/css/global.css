@@ -223,3 +223,23 @@ body {
 .form-group.error {
   color: #cc0033;
 }
+
+.container-components {
+  margin-left: 245px;
+  padding: 30px;
+}
+
+.login-map-background {
+  background: url('../../assets/images/city-back.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@media screen and (max-width: 500px) {
+  .container-components {
+    margin-left: 0;
+    padding: 30px;
+  }
+}
