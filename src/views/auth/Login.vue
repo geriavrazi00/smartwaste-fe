@@ -144,7 +144,7 @@ export default {
     width: 60%;
   }
   .row {
-    margin-top: 100px;
+    margin-top: 80px;
     width: 100%;
   }
   .city-img {
@@ -152,6 +152,7 @@ export default {
     height: 100%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    object-fit: cover;
   }
   .login-container {
     background-color: white;
