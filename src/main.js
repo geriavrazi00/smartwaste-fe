@@ -12,9 +12,10 @@ import { faChartPie } from '@fortawesome/free-solid-svg-icons'
 import { faRoute } from '@fortawesome/free-solid-svg-icons'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faDumpster } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faChartPie, faRoute, faQuestion, faSignOutAlt)
+library.add(faChartPie, faRoute, faQuestion, faSignOutAlt, faDumpster)
 
 createApp(App)
     .use(i18n)
