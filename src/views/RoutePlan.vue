@@ -1,5 +1,5 @@
 <template>
-  <div class="container-components" >
+  <div class="container-components">
     <div id="google-map"></div>
 
     <div id="directions-contrainer">
@@ -38,7 +38,7 @@
       loadMarkers() {
         // Call the api to load the proper locations
         this.markers = [
-           { lat: 41.321263, lng: 19.807579 },
+           { lat: 41.32755, lng: 19.807579 },
            { lat: 41.321666, lng: 19.811430 },
            { lat: 41.328626, lng: 19.802093 },
            { lat: 41.328495, lng: 19.824447 }
@@ -72,8 +72,8 @@
         });
 
         // Setting the traffic layer
-        // const trafficLayer = new google.maps.TrafficLayer();
-        // trafficLayer.setMap(map);
+        const trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
         directionsRenderer.setMap(map);
         return this.calculateAndDisplayRoute(directionsService, directionsRenderer);
       },
@@ -136,8 +136,6 @@
 
   #google-map {
     width: 100%;
-    /* width: 100%;
-    height: 100vh; */
     flex-basis: 0;
     flex-grow: 4;
     height: 100vh;
@@ -155,7 +153,6 @@
   }
 
   #directions-panel {
-    
     margin-top: 10px;
   }
 
