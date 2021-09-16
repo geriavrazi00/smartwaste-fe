@@ -3,10 +3,6 @@ const serveStatic = require("serve-static")
 const path = require('path');
 app = express();
 app.use(serveStatic(path.join(__dirname, 'dist')));
-app.use(history({
-  disableDotRule: true,
-  verbose: true
-}));
 const port = process.env.PORT || 3000;
 app.listen(port);
 
