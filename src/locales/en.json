@@ -20,5 +20,43 @@
   "login-successful": "Login successful",
   "login-failed": "Login failed",
   "form-validation-failed": "Not all the values are valid!",
-  "error": "Error"
+  "error": "Error",
+	"help": {
+		"help-and-documentation": "Help and documentation",
+		"info": {
+			"tracking": {
+				"title": "How does the tracking work?",
+				"content": ""
+			},
+			"best-route": {
+				"title": "How to find the best route?",
+				"content": ""
+			},
+			"fuel": {
+				"title": "How to calculate fuel?",
+				"content": ""
+			},
+			"vehicles": {
+				"title":  "How to know what vehicles are deployed?",
+				"content": ""
+			},
+			"critical-areas": {
+				"title":  "How to see most critical areas?",
+				"content": ""
+			},
+			"select-bin": {
+				"title": "How to select a bin in the map?",
+				"content": ""
+			},
+			"access-statistics": {
+				"title": "How to access statistics?",
+				"content": ""
+			},
+			"best-plan": {
+				"title": "How to define the best plan?",
+				"content": ""
+			}
+		}
+		
+	}
 }
