@@ -1,13 +1,13 @@
 <template>
-	<div class="container-components col-md-9 offset-md-2 row">
+	<div class="container-components col-xs-9 offset-xs-2 row">
 
-		<div class="col-md-12">
+		<div class="col-xs-12">
 			<h1 style="width: 100%;">{{ $t('help.help-and-documentation') }}</h1>
 		</div>
 
 		<br><br>
 
-		<div class="accordion col-md-12" id="accordionExample" style="margin-top: 20px; padding-bottom: 25px;">
+		<div class="accordion col-xs-12" id="accordionExample" style="margin-top: 20px; padding-bottom: 25px;">
 			<vue-collapsible-panel-group accordion>
 				<vue-collapsible-panel :expanded="false">
 						<template #title>
@@ -114,36 +114,36 @@
     },
 
 		mounted() {
-			this.loadContent();
+			// this.loadContent();
 		},
 
 		methods: {
-			loadContent() {
-				this.panels.push({
-					title: this.$t('help.tracking.title'), 
-					content: this.$t('help.tracking.content')});
-				this.panels.push({
-					title: this.$t('help.best-route.title'), 
-					content: this.$t('help.best-route.content')});
-				this.panels.push({
-					title: this.$t('help.fuel.title'), 
-					content: this.$t('help.fuel.content')});
-				this.panels.push({
-					title: this.$t('help.vehicles.title'), 
-					content: this.$t('help.vehicles.content')});
-				this.panels.push({
-					title: this.$t('help.critical-areas.title'), 
-					content: this.$t('help.critical-areas.content')});
-				this.panels.push({
-					title: this.$t('help.select-bin.title'), 
-					content: this.$t('help.select-bin.content')});
-				this.panels.push({
-					title: this.$t('help.access-statistics.title'), 
-					content: this.$t('help.access-statistics.content')});
-				this.panels.push({
-					title: this.$t('help.best-plan.title'), 
-					content: this.$t('help.best-plan.content')});
-			}
+			// loadContent() {
+			// 	this.panels.push({
+			// 		title: this.$t('help.tracking.title'), 
+			// 		content: this.$t('help.tracking.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.best-route.title'), 
+			// 		content: this.$t('help.best-route.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.fuel.title'), 
+			// 		content: this.$t('help.fuel.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.vehicles.title'), 
+			// 		content: this.$t('help.vehicles.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.critical-areas.title'), 
+			// 		content: this.$t('help.critical-areas.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.select-bin.title'), 
+			// 		content: this.$t('help.select-bin.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.access-statistics.title'), 
+			// 		content: this.$t('help.access-statistics.content')});
+			// 	this.panels.push({
+			// 		title: this.$t('help.best-plan.title'), 
+			// 		content: this.$t('help.best-plan.content')});
+			// }
 		}
   }
 	
@@ -158,10 +158,17 @@
     position: relative;
     top: 54px;
     margin-left: 300px;
-    margin-right: 300px;
+    margin-right: 20px;
 	}
 
-	.vcp .vcp--expandable {
+	/* .vcp .vcp--expandable {
 		background-color: #37CEB7;
-	}
+	} */
+
+	@media screen and (max-width: 500px) {
+  .container-components {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
 </style>

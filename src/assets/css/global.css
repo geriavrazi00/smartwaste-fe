@@ -264,9 +264,22 @@ body {
   color: black;
 }
 
+@media screen and (max-width: 768px) {
+  .vcp--expandable .vcp__header {
+		/* margin-top: 10px; */
+    font-size: 15px;
+	}
+}
+
+
 @media screen and (max-width: 500px) {
   .container-components {
     margin-left: 0;
     padding: 30px;
   }
+
+  .vcp--expandable .vcp__header {
+		/* margin-top: 10px; */
+    font-size: 15px;
+	}
 }
