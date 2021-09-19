@@ -20,5 +20,42 @@
   "login-successful": "Hyre me sukses",
   "login-failed": "Nuk hyre me sukses",
   "form-validation-failed": "Fushat nuk janë plotësuar saktë!",
-  "error": "Problem"
+  "error": "Problem",
+	"help": {
+		"help-and-documentation": "Ndihmë dhe dokumentacion",
+    "info": {
+			"tracking": {
+				"title":  "Si funksionon gjurmimi?",
+				"content": ""
+			},
+			"best-route": {
+				"title": "Si të gjesh rrugën më të mirë?",
+				"content": ""
+			},
+			"fuel": {
+				"title": "Si të llogarisësh karburantin?",
+				"content": ""
+			},
+			"vehicles": {
+				"title":  "Si të dish se çfarë automjetesh janë vendosur në punë?",
+				"content": ""
+			},
+			"critical-areas": {
+				"title":  "Si të shohësh zonat më kritike?",
+				"content": ""
+			},
+			"select-bin": {
+				"title": "Si të zgjedhësh një kosh në hartë?",
+				"content": ""
+			},
+			"access-statistics": {
+				"title": "Si të aksesosh statistikat?",
+				"content": ""
+			},
+			"best-plan": {
+				"title": "Si të caktosh se cili është plani më i mirë?",
+				"content": ""
+			}
+		}
+	}
 }

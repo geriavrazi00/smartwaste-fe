@@ -182,6 +182,7 @@
 /** General classes **/
 body {
   margin: 0;
+  background-color: #f9f9f9!important;
 }
 
 .custom-input {
@@ -237,9 +238,48 @@ body {
   background-size: cover;
 }
 
+/** Accordion **/
+.vcp--expandable .vcp__header {
+  background-color: white!important;
+  border-bottom: 5px solid #E6F5FB!important;
+  color: #37CEB7;
+  font-size: 22px;
+  border-top: none!important;
+  height: 55px!important;
+}
+
+.vcpg {
+  border-top: none!important;
+  border-left: none!important;
+  border-right: none!important;
+  border-bottom: none!important;
+}
+
+.vcpg .vcp__body {
+  border-top: none!important;
+  border-bottom: none!important;
+}
+
+.vcp__header-icon {
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .vcp--expandable .vcp__header {
+		/* margin-top: 10px; */
+    font-size: 15px;
+	}
+}
+
+
 @media screen and (max-width: 500px) {
   .container-components {
     margin-left: 0;
     padding: 30px;
   }
+
+  .vcp--expandable .vcp__header {
+		/* margin-top: 10px; */
+    font-size: 15px;
+	}
 }

@@ -14,6 +14,8 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { faDumpster } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueCollapsiblePanel from '@dafcoe/vue-collapsible-panel'
+import '@dafcoe/vue-collapsible-panel/dist/vue-collapsible-panel.css'
 
 library.add(faChartPie, faRoute, faQuestion, faSignOutAlt, faDumpster)
 
@@ -21,6 +23,7 @@ createApp(App)
     .use(i18n)
     .use(VueSweetalert2)
     .use(router)
+    .use(VueCollapsiblePanel)
     .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')
 

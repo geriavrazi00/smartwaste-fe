@@ -38,8 +38,9 @@
     background-color: #fff;
     position: fixed;
     height: 100%;
-    overflow: auto;
+    /* overflow: auto; */
     box-shadow: 0px 3px 40px #00000029;
+    overflow: hidden;
   }
 
   /* Sidebar links */

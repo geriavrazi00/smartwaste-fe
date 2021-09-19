@@ -107,7 +107,7 @@ export default {
               'line-cap': 'round'
             },
             paint: {
-              'line-color': '#3887be',
+              'line-color': '#37CEB7',
               'line-width': ['interpolate', ['linear'], ['zoom'], 12, 3, 22, 12]
             }
           }, 'waterway-label'
@@ -125,7 +125,7 @@ export default {
               'text-keep-upright': false
             },
             paint: {
-              'text-color': '#3887be',
+              'text-color': '#37CEB7',
               'text-halo-color': 'hsl(55, 11%, 96%)',
               'text-halo-width': 3
             }
@@ -204,8 +204,12 @@ export default {
 
       // Set the profile to `driving`
       // Coordinates will include the current location of the truck,
+
+      // In the response we are interested in the trips object, legs array we can get each route with its distance in m and duration in s. 
+      // Inside the object we also have the total duration and distance
       return `https://api.mapbox.com/optimized-trips/v1/mapbox/driving-traffic/${coordinates.join(';')}`
         + `?overview=full`
+        + `&annotations=duration,distance,speed`
         + `&steps=true`
         + `&geometries=geojson`
         + `&source=first`
