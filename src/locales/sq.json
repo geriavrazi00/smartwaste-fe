@@ -26,35 +26,24 @@
     "info": {
 			"tracking": {
 				"title":  "Si funksionon gjurmimi?",
-				"content": ""
+				"content": "Me anë të sensorëve të vendosur në koshat e plehrave, sistemi ka mundësine të marrë dhe interpretojë koodrinatat dhe nivelin e mbushjes së koshit. Në harte do keni mundësine të shikoni në kohë reale lokacionin dhe gjithashtu nivelin e mbushjes së koshit."
 			},
 			"best-route": {
-				"title": "Si të gjesh rrugën më të mirë?",
-				"content": ""
+				"title": "Si gjindet rruga më e mirë?",
+				"content": "Rruga gjindet në mënyre automatike nga sistemi yne. Algoritmi i zhvilluar nga ne merr parasysh 3 variabla te rëndësishme i) trafikun ii) orarin e pikut dhe lëvizjes iii) distancen më të shkurtër nga pika e nisjes. Të gjitha këto variabla kombinohen së bashku për të llogaritur rrugën me eficente."
 			},
-			"fuel": {
-				"title": "Si të llogarisësh karburantin?",
-				"content": ""
-			},
-			"vehicles": {
-				"title":  "Si të dish se çfarë automjetesh janë vendosur në punë?",
-				"content": ""
-			},
+
 			"critical-areas": {
 				"title":  "Si të shohësh zonat më kritike?",
-				"content": ""
+				"content": "Zonat më kritike janë të shfaqura në krahun e djathtë të faqes “Statistika”. Në informacionet e dala në atë seksion do keni mundësine të bëni check çdo të dhënë mbi nivelin e mbushjes së një koshi dhe gjendjen e cdo koshi me nivelet respektive."
 			},
 			"select-bin": {
 				"title": "Si të zgjedhësh një kosh në hartë?",
-				"content": ""
+				"content": "Në hartë do shikoni disa pika të shfaqura në ngjyra të ndryshme. Ngjyrat përfaqesojnë nivelet e ndryshme të koshave të mbushur, E kuqe (koshi është i mbushur në nivele kritike), Portokalli (koshi është i mbushur dhe është gati për tu zbrazur, jeshile (koshi është i mbushur në nivele minimale). Në momentin që do klikoni mbi cdo pike të shfaqur do keni gjithashtu mundësine të shikoni dhe të dhëna më të detajuara për koshin, duke përfshirë lokacionin dhe nivelin e mbushjes."
 			},
-			"access-statistics": {
-				"title": "Si të aksesosh statistikat?",
-				"content": ""
-			},
-			"best-plan": {
-				"title": "Si të caktosh se cili është plani më i mirë?",
-				"content": ""
+			"alternative-routes": {
+				"title": "Si të shohësh rrugë të ndryshme?",
+				"content": "Ju do keni mundësineë të përcaktoni zonën dhe kamionin e grumbullimit respektivisht. Pas përcaktimit të zonës dhe kamionit respektiv, sistemi do ketë mundësine të bëjë kalkulimin në mënyrë automatike për rrugën më efikase dhe menyrën më efikase të mbledhjes së mbeturinave."
 			}
 		}
 	}

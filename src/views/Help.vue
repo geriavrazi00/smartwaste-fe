@@ -14,8 +14,7 @@
 							{{ $t('help.info.tracking.title') }}
 						</template>
 						<template #content>
-							<!-- {{ $t('help.info.tracking.content') }} -->
-							{{text}}
+							{{ $t('help.info.tracking.content') }}
 						</template>
 				</vue-collapsible-panel>
 
@@ -24,28 +23,7 @@
 						{{ $t('help.info.best-route.title') }}
 					</template>
 					<template #content>
-						<!-- {{ $t('help.info.best-route.content') }} -->
-						{{text}}
-					</template>
-				</vue-collapsible-panel>
-
-				<vue-collapsible-panel :expanded="false">
-					<template #title>
-						{{ $t('help.info.fuel.title') }}
-					</template>
-					<template #content>
-						<!-- {{ $t('help.info.fuel.content') }} -->
-						{{text}}
-					</template>
-				</vue-collapsible-panel>
-
-				<vue-collapsible-panel :expanded="false">
-					<template #title>
-						{{ $t('help.info.vehicles.title') }}
-					</template>
-					<template #content>
-						<!-- {{ $t('help.info.vehicles.content') }} -->
-						{{text}}
+						{{ $t('help.info.best-route.content') }}
 					</template>
 				</vue-collapsible-panel>
 
@@ -54,8 +32,7 @@
 						{{ $t('help.info.critical-areas.title') }}
 					</template>
 					<template #content>
-						<!-- {{ $t('help.info.critical-areas.content') }} -->
-						{{text}}
+						{{ $t('help.info.critical-areas.content') }}
 					</template>
 				</vue-collapsible-panel>
 
@@ -64,28 +41,16 @@
 						{{ $t('help.info.select-bin.title') }}
 					</template>
 					<template #content>
-						<!-- {{ $t('help.info.select-bin.content') }} -->
-						{{text}}
+						{{ $t('help.info.select-bin.content') }}
 					</template>
 				</vue-collapsible-panel>
 
 				<vue-collapsible-panel :expanded="false">
 					<template #title>
-						{{ $t('help.info.access-statistics.title') }}
+						{{ $t('help.info.alternative-routes.title') }}
 					</template>
 					<template #content>
-						<!-- {{ $t('help.info.access-statistics.content') }} -->
-						{{text}}
-					</template>
-				</vue-collapsible-panel>
-
-				<vue-collapsible-panel :expanded="false">
-					<template #title>
-						{{ $t('help.info.best-plan.title') }}
-					</template>
-					<template #content>
-						<!-- {{ $t('help.info.best-plan.content') }} -->
-						{{text}}
+						{{ $t('help.info.alternative-routes.content') }}
 					</template>
 				</vue-collapsible-panel>
 		</vue-collapsible-panel-group>
@@ -99,52 +64,9 @@
 	export default {
     data() {
       return {
-				panels: [],
-        text: `
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-          richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-          brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-          tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-          assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
-          wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-          vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic
-          synth nesciunt you probably haven't heard of them accusamus labore VHS.
-        `
+				panels: []
       }
     },
-
-		mounted() {
-			// this.loadContent();
-		},
-
-		methods: {
-			// loadContent() {
-			// 	this.panels.push({
-			// 		title: this.$t('help.tracking.title'), 
-			// 		content: this.$t('help.tracking.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.best-route.title'), 
-			// 		content: this.$t('help.best-route.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.fuel.title'), 
-			// 		content: this.$t('help.fuel.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.vehicles.title'), 
-			// 		content: this.$t('help.vehicles.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.critical-areas.title'), 
-			// 		content: this.$t('help.critical-areas.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.select-bin.title'), 
-			// 		content: this.$t('help.select-bin.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.access-statistics.title'), 
-			// 		content: this.$t('help.access-statistics.content')});
-			// 	this.panels.push({
-			// 		title: this.$t('help.best-plan.title'), 
-			// 		content: this.$t('help.best-plan.content')});
-			// }
-		}
   }
 	
 </script>
