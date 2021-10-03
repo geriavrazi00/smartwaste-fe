@@ -13,24 +13,21 @@ import { faRoute } from '@fortawesome/free-solid-svg-icons'
 import { faQuestion } from '@fortawesome/free-solid-svg-icons'
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { faDumpster } from '@fortawesome/free-solid-svg-icons'
+import { faChartArea } from '@fortawesome/free-solid-svg-icons'
+import { faTruck } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueCollapsiblePanel from '@dafcoe/vue-collapsible-panel'
 import '@dafcoe/vue-collapsible-panel/dist/vue-collapsible-panel.css'
+import VueApexCharts from "vue3-apexcharts";
 
-library.add(faChartPie, faRoute, faQuestion, faSignOutAlt, faDumpster)
+library.add(faChartPie, faRoute, faQuestion, faSignOutAlt, faDumpster, faChartArea, faTruck, faEllipsisH)
 
 createApp(App)
     .use(i18n)
     .use(VueSweetalert2)
     .use(router)
     .use(VueCollapsiblePanel)
+    .use(VueApexCharts)
     .component('font-awesome-icon', FontAwesomeIcon)
 .mount('#app')
-
-
-
-// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-    // .use(BootstrapVue)
-    // .use(IconsPlugin)
-
-// Import Bootstrap an BootstrapVue CSS files (order is important)
