@@ -26,35 +26,23 @@
 		"info": {
 			"tracking": {
 				"title": "How does the tracking work?",
-				"content": ""
+				"content": "By using the sensors in the bins, the system is able to get and interpret the coordinates and the level of filling of the bin. You will be able to see in real time the location and the filling of the bin on the map."
 			},
 			"best-route": {
 				"title": "How to find the best route?",
-				"content": ""
-			},
-			"fuel": {
-				"title": "How to calculate fuel?",
-				"content": ""
-			},
-			"vehicles": {
-				"title":  "How to know what vehicles are deployed?",
-				"content": ""
+				"content": "The route is calculated automatically by our system. The developed algorithm takes in consideration 3 important variables I) traffic ii) the peak movement schedule iii) the shortest distance from the starting point. All these variables are combined together to calculate the most efficient route."
 			},
 			"critical-areas": {
 				"title":  "How to see most critical areas?",
-				"content": ""
+				"content": "The most critical areas will be shown on the right side of the “Statistics” page. In the information displayed on that section, you will be able to check every data about the level of filling of a bin and the stats of the bin with the respective levels."
 			},
 			"select-bin": {
 				"title": "How to select a bin in the map?",
-				"content": ""
+				"content": "In the map you will see some markers in different colors. The colors represent the different levels of bin filling, red (the bin is filled in a critical level), orange (the bin is filled and is ready to be emptied), green (the bin is filled in a minimal level). In the moment you click on a marker, you will be able to see even more detailed data about the bin, including the location and the level of filling."
 			},
-			"access-statistics": {
-				"title": "How to access statistics?",
-				"content": ""
-			},
-			"best-plan": {
+			"alternative-routes": {
 				"title": "How to define the best plan?",
-				"content": ""
+				"content": "You will be able to determine the area and the garbage truck respectively. After the selection is made, the system will be able to calculate automatically the most efficient route and the most efficient way of the waste collection."
 			}
 		}
 		
