@@ -16,7 +16,7 @@
 		<div id="small-map" class="col-xl-4 offset-xl-1 small-map row"></div>
 		
 		<div class="col-xl-7 general-statistics-container row">
-			<h2>Të përgjithshme</h2>
+			<h2>{{ $t('statistics.general') }}</h2>
 			
 			<div class="col-xl-6 row" style="padding: 0px; height: fit-content;">
 				<div id="radial-bar-1" class="col-xl-6">
@@ -30,22 +30,22 @@
 
 				<div class="col-3">
 					<h1 style="margin: 0;">45%</h1>
-					<p style="font-size: 12px;">Aktivitet ditor</p>
+					<p style="font-size: 12px;">{{ $t('statistics.daily_activity') }}</p>
 				</div>
 
 				<div class="col-3">
 					<h1 style="margin: 0;">25%</h1>
-					<p style="font-size: 12px;">Aktivitet mujor</p>
+					<p style="font-size: 12px;">{{ $t('statistics.monthly_activity') }}</p>
 				</div>
 
 				<div class="col-3">
 					<h1 style="margin: 0;">64%</h1>
-					<p style="font-size: 12px;">Tremujori</p>
+					<p style="font-size: 12px;">{{ $t('statistics.trimester') }}</p>
 				</div>
 
 				<div class="col-3">
 					<h1 style="margin: 0;">80%</h1>
-					<p style="font-size: 12px;">Aktivitet vjetor</p>
+					<p style="font-size: 12px;">{{ $t('statistics.yearly_activity') }}</p>
 				</div>
 			</div>
 
@@ -56,16 +56,16 @@
 							<font-awesome-icon icon="chart-area" class="short-general-statistics-container-icon"/>
 						</div>
 
-						<p style="font-size: 12px;">Statistika</p>
-						<p style="font-size: 12px;">Disa statistika</p>
+						<p style="font-size: 12px;">{{ $t('statistics.statistics') }}</p>
+						<p style="font-size: 12px;">{{ $t('statistics.general_activity') }}</p>
 					</div>
 					<div class="col-xl-4 short-general-statistics-container">
 						<div class="short-general-statistics-container-icon-bckg">
 							<font-awesome-icon icon="route" class="short-general-statistics-container-icon"/>
 						</div>
 
-						<p style="font-size: 12px;">Rruga</p>
-						<p style="font-size: 12px;">Rruga më e shkurtër</p>
+						<p style="font-size: 12px;">{{ $t('statistics.route') }}</p>
+						<p style="font-size: 12px;">{{ $t('statistics.shortest_route') }}</p>
 					</div>
 				</div>
 
@@ -75,23 +75,23 @@
 							<font-awesome-icon icon="truck" class="short-general-statistics-container-icon"/>
 						</div>
 
-						<p style="font-size: 12px;">Kamionët</p>
-						<p style="font-size: 12px;">Të gjithë kamionët</p>
+						<p style="font-size: 12px;">{{ $t('statistics.trucks') }}</p>
+						<p style="font-size: 12px;">{{ $t('statistics.all_trucks') }}</p>
 					</div>
 					<div class="col-xl-4 short-general-statistics-container">
 						<div class="short-general-statistics-container-icon-bckg">
 							<font-awesome-icon icon="ellipsis-h" class="short-general-statistics-container-icon"/>
 						</div>
 
-						<p style="font-size: 12px;">Të tjera</p>
-						<p style="font-size: 12px;">Statistika të tjera</p>
+						<p style="font-size: 12px;">{{ $t('statistics.others') }}</p>
+						<p style="font-size: 12px;">{{ $t('statistics.other_statistics') }}</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="col-xl-4 offset-xl-1 general-statistics-container row">
-			<h2>Gjendja e zonave</h2>
+			<h2>{{ $t('statistics.state_of_areas') }}</h2>
 			<apexchart type="bar" height="250" :options="barChart.chartOptions" :series="barChart.series"></apexchart>
 		</div>
 	</div>
@@ -110,27 +110,27 @@
 					street: "Myslym Shyri", 
 					values: [
 						{
-							label: "*collected trash in kilograms",
+							label: this.$t('statistics.collected_trash_in_kg'),
 							value: "95%"
 						},
 						{
-							label: "*collected bin number",
+							label: this.$t('statistics.collected_bin_number'),
 							value: "45%"
 						},
 						{
-							label: "*status of the bins",
+							label: this.$t('statistics.status_of_the_bins'),
 							value: "81%"
 						},
 						{
-							label: "*number of critical status bins",
+							label: this.$t('statistics.number_of_critical_status_bins'),
 							value: "70%"
 						},
 						{
-							label: "*number of okay status bins",
+							label: this.$t('statistics.number_of_okay_status_bins'),
 							value: "80%"
 						},
 						{
-							label: "*number of good status bins",
+							label: this.$t('statistics.number_of_good_status_bins'),
 							value: "83%"
 						},
 					],
@@ -166,7 +166,7 @@
 								}
 							},
 						},
-						labels: ['Statistic 1'],
+						labels: [this.$t('statistics.statistics')],
 						fill: {
 							colors: ['#FF9100'],
 						},
@@ -203,7 +203,7 @@
 								}
 							},
 						},
-						labels: ['Statistic 2'],
+						labels: [this.$t('statistics.statistics')],
 						fill: {
 							colors: ['#FA1D20'],
 						},

@@ -45,6 +45,27 @@
 				"content": "You will be able to determine the area and the garbage truck respectively. After the selection is made, the system will be able to calculate automatically the most efficient route and the most efficient way of the waste collection."
 			}
 		}
-		
+	},
+	"statistics": {
+		"general": "General",
+		"daily_activity": "Daily activity",
+		"monthly_activity": "Monthly activity",
+		"trimester": "Trimester",
+		"yearly_activity": "Yearly activity",
+		"statistics": "Statistics",
+		"general_activity": "General activity",
+		"route": "Route",
+		"shortest_route": "Shortest route",
+		"trucks": "Trucks",
+		"all_trucks": "All trucks",
+		"others": "others",
+		"other_statistics": "Other statistics",
+		"state_of_areas": "State of the areas",
+		"collected_trash_in_kg": "Collected trash in kilograms",
+		"collected_bin_number": "Collected bin number",
+		"status_of_the_bins": "Status of the bins",
+		"number_of_critical_status_bins": "Number of critical status bins",
+		"number_of_okay_status_bins": "Number of okay status bins",
+		"number_of_good_status_bins": "Number of good status bins" 
 	}
 }
