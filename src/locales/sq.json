@@ -32,7 +32,6 @@
 				"title": "Si gjindet rruga më e mirë?",
 				"content": "Rruga gjindet në mënyre automatike nga sistemi yne. Algoritmi i zhvilluar nga ne merr parasysh 3 variabla te rëndësishme i) trafikun ii) orarin e pikut dhe lëvizjes iii) distancen më të shkurtër nga pika e nisjes. Të gjitha këto variabla kombinohen së bashku për të llogaritur rrugën me eficente."
 			},
-
 			"critical-areas": {
 				"title":  "Si të shohësh zonat më kritike?",
 				"content": "Zonat më kritike janë të shfaqura në krahun e djathtë të faqes “Statistika”. Në informacionet e dala në atë seksion do keni mundësine të bëni check çdo të dhënë mbi nivelin e mbushjes së një koshi dhe gjendjen e cdo koshi me nivelet respektive."
@@ -46,5 +45,27 @@
 				"content": "Ju do keni mundësineë të përcaktoni zonën dhe kamionin e grumbullimit respektivisht. Pas përcaktimit të zonës dhe kamionit respektiv, sistemi do ketë mundësine të bëjë kalkulimin në mënyrë automatike për rrugën më efikase dhe menyrën më efikase të mbledhjes së mbeturinave."
 			}
 		}
+	},
+	"statistics": {
+		"general": "Të përgjithshme",
+		"daily_activity": "Aktivitet ditor",
+		"monthly_activity": "Aktivitet mujor",
+		"trimester": "Tremujori",
+		"yearly_activity": "Aktivitet vjetor",
+		"statistics": "Statistika",
+		"general_activity": "Aktivitet i përgjithshëm",
+		"route": "Rruga",
+		"shortest_route": "Rruga më e shkurtër",
+		"trucks": "Kamionët",
+		"all_trucks": "Të gjithë kamionët",
+		"others": "Të tjera",
+		"other_statistics": "Statistika të tjera",
+		"state_of_areas": "Gjendja e zonave",
+		"collected_trash_in_kg": "Mbeturinat e mbledhura në kg",
+		"collected_bin_number": "Koshat e mbledhur",
+		"status_of_the_bins": "Gjendja e koshave",
+		"number_of_critical_status_bins": "Koshat në gjendje kritike",
+		"number_of_okay_status_bins": "Koshat në gjendje mesatare",
+		"number_of_good_status_bins": "Koshat në gjendje të mirë" 
 	}
 }
