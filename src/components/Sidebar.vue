@@ -11,9 +11,6 @@
       <router-link :to="{ name: 'RoutePlan'}" style="display: flex;">
         <div class="col-3"><font-awesome-icon icon="route"/></div> <div class="col-9">{{ $t('menu.routeplan') }}</div>
       </router-link>
-      <router-link :to="{ name: 'RoutePlan2'}" style="display: flex;">
-        <div class="col-3"><font-awesome-icon icon="route"/></div> <div class="col-9">MapBox</div>
-      </router-link>
       <router-link :to="{ name: 'Help'}" style="display: flex;">
         <div class="col-3"><font-awesome-icon icon="question"/></div> <div class="col-9">{{ $t('menu.help') }}</div>
       </router-link>

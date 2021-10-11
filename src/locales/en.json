@@ -67,5 +67,6 @@
 		"number_of_critical_status_bins": "Number of critical status bins",
 		"number_of_okay_status_bins": "Number of okay status bins",
 		"number_of_good_status_bins": "Number of good status bins" 
-	}
+	},
+	"bin_state_by_area": "Bin state by area"
 }

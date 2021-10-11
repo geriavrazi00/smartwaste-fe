@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/auth/Login.vue";
 import Help from "../views/Help.vue";
 import RoutePlan from "../views/RoutePlan.vue";
-import RoutePlan2 from "../views/RoutePlan2.vue";
 import Statistics from "../views/Statistics.vue";
 import NotFound from "../views/errors/NotFound.vue";
 
@@ -25,11 +24,6 @@ const routes = [
 		path: '/routeplan',
 		name: 'RoutePlan',
 		component: RoutePlan
-	},
-	{
-		path: '/routeplan2',
-		name: 'RoutePlan2',
-		component: RoutePlan2
 	},
 	{
 		path: '/help',
