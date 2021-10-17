@@ -27,6 +27,11 @@ export default {
       sensor1Id: process.env.VUE_APP_SENSOR1_ID,
       markers: [],
       center: [19.8187, 41.3275],
+      defaultLocations: [
+        [19.800412, 41.312526], // Geri
+        [19.815143, 41.303895] // Albi
+      ],
+      mapCenter: [19.8244686, 41.3131335],
       zoom: 13,
       data: null,
       mapData: {
@@ -43,7 +48,8 @@ export default {
           //   color: "#37CEB7"
           // }
         ]
-      }
+      },
+      binMaxDepth: 255
     }
   },
   mounted() {
@@ -51,10 +57,53 @@ export default {
   },
   methods: {
     loadMarkers() {
-      this.markers.push([ 19.807579, 41.32755  ]);
-      this.markers.push([ 19.811430, 41.321666 ]);
-      this.markers.push([ 19.802093, 41.328626 ]);
-      this.markers.push([ 19.824447, 41.328495 ]);
+      for (let index = 0; index < this.defaultLocations.length; index++) {
+        const element = this.defaultLocations[index];
+        this.markers.push(element);
+      }
+
+      // this.markers = this.markers.push(this.defaultLocations);
+      // this.markers.push([ 19.807579, 41.32755  ]);
+      // this.markers.push([ 19.811430, 41.321666 ]);
+      // this.markers.push([ 19.802093, 41.328626 ]);
+      // this.markers.push([ 19.824447, 41.328495 ]);
+    },
+
+    async loadMapData() {
+      // Make a request to the Optimization API
+      const query = await fetch(this.assembleQueryURL(), { method: 'GET' });
+      const data = await query.json();
+
+      // Build an object with the data
+      this.mapData.distance = data.trips[0].distance;
+      this.mapData.duration = data.trips[0].duration;
+      
+      for (let i = 0; i < data.waypoints.length; i++) {
+        let mapDataObj = {};
+        mapDataObj.location = data.waypoints[i].location;
+        mapDataObj.name = data.waypoints[i].name;
+
+        this.mapData.trips.push(mapDataObj);
+      }
+
+      for (let i = 0; i < data.trips[0].legs.length; i++) {
+        this.mapData.trips[i].distance = data.trips[0].legs[i].distance * 0.001;
+        this.mapData.trips[i].duration = data.trips[0].legs[i].duration * 0.0166667;
+        this.mapData.trips[i].summary = data.trips[0].legs[i].summary;
+
+        let value = (this.data.sensor_leftdown + this.data.sensor_leftup + this.data.sensor_rightdown + this.data.sensor_rightup) / 4;
+        this.mapData.trips[i].value = ((this.binMaxDepth - value) * 100 / this.binMaxDepth).toFixed(2);
+
+        if (this.mapData.trips[i].value <= 50) {
+          this.mapData.trips[i].color = "#37CEB7";
+        } else if (this.mapData.trips[i].value > 50 && this.mapData.trips[i].value <= 80) {
+          this.mapData.trips[i].color = "#FF9100";
+        } else {
+          this.mapData.trips[i].color = "#FA1D20";
+        }
+      }
+
+      return data;
     },
 
     async loadMap() {
@@ -63,13 +112,14 @@ export default {
       const warehouse = turf.featureCollection([turf.point(this.center)]);
       // Create an empty GeoJSON feature collection, which will be used as the data source for the route before users add any new data
       const nothing = turf.featureCollection([]);
+      const data = await this.loadMapData();
  
       mapboxgl.accessToken = this.accessToken;
       let map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         zoom: this.zoom, // starting zoom
-        center: this.center,
+        center: this.mapCenter,
       });
 
       // Add zoom and rotation controls to the map.
@@ -81,7 +131,18 @@ export default {
         if (i != 0) {
           const dumpster = document.createElement('div');
           dumpster.classList = 'dumpster';
-          new mapboxgl.Marker(dumpster).setLngLat(this.markers[i]).addTo(map);
+
+          // create the popup
+          const popup = new mapboxgl.Popup({ offset: [0, -5], closeOnClick: false, closeButton: false }).setHTML(
+            '<span style="font-weight: bold; font-size: 12px;">' + this.mapData.trips[i].name + '</span><br/>'
+            + '<span style="font-weight: bold;">Mbushur: </span>' + this.mapData.trips[i].value + '%'
+          );
+
+          new mapboxgl.Marker(dumpster)
+            .setLngLat(this.markers[i])
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map)
+            .togglePopup();
         }
       }
 
@@ -119,7 +180,7 @@ export default {
           }
         });
 
-          map.addSource('route', {
+        map.addSource('route', {
           type: 'geojson',
           data: nothing
         });
@@ -158,15 +219,11 @@ export default {
           }, 'waterway-label'
         );
 
-        this.doStuff(map);
+        this.loadRoute(map, data);
       });
     },
 
-    async doStuff(map) {
-      // Make a request to the Optimization API
-      const query = await fetch(this.assembleQueryURL(), { method: 'GET' });
-      const data = await query.json();
-      
+    async loadRoute(map, data) {
       // Create a GeoJSON feature collection
       let routeGeoJSON = turf.featureCollection([
         turf.feature(data.trips[0].geometry)
@@ -180,44 +237,12 @@ export default {
         // and setting the data equal to routeGeoJSON
         map.getSource('route').setData(routeGeoJSON);
       }
-
-      // Build an object with the data
-      this.mapData.distance = data.trips[0].distance;
-      this.mapData.duration = data.trips[0].duration;
-      
-      for (let i = 0; i < data.waypoints.length; i++) {
-        let mapDataObj = {};
-        mapDataObj.location = data.waypoints[i].location;
-        mapDataObj.name = data.waypoints[i].name;
-
-        this.mapData.trips.push(mapDataObj);
-      }
-
-      for (let i = 0; i < data.trips[0].legs.length; i++) {
-        this.mapData.trips[i].distance = data.trips[0].legs[i].distance * 0.001;
-        this.mapData.trips[i].duration = data.trips[0].legs[i].duration * 0.0166667;
-        this.mapData.trips[i].summary = data.trips[0].legs[i].summary;
-
-        let value = (this.data.sensor_leftdown + this.data.sensor_leftup + this.data.sensor_rightdown + this.data.sensor_rightup) / 4;
-        this.mapData.trips[i].value = 100 - value;
-
-        if (this.mapData.trips[i].value <= 50) {
-          this.mapData.trips[i].color = "#37CEB7";
-        } else if (this.mapData.trips[i].value > 50 && this.mapData.trips[i].value <= 80) {
-          this.mapData.trips[i].color = "#FF9100";
-        } else {
-          this.mapData.trips[i].color = "#FA1D20";
-        }
-      }
     },
 
     // Here you'll specify all the parameters necessary for requesting a response from the Optimization API
     assembleQueryURL() {
       // Store the location of the truck in a constant called coordinates
       const coordinates = this.markers;
-
-      // Set the profile to `driving`
-      // Coordinates will include the current location of the truck,
 
       // In the response we are interested in the trips object, legs array we can get each route with its distance in m and duration in s. 
       // Inside the object we also have the total duration and distance
@@ -232,23 +257,26 @@ export default {
         // ?distributions=${distributions.join(';')}
     },
 
-    async loadBinStatus() {
-      this.markers.push(this.center);
-
-      this.axios
+    async readSensorData(sensorId) {
+      return this.axios
       .get('/odata/SensorDiagnostic', {
         params: {
           $top: 1, 
           $skip: 0,
           $inlinecount: "allpages", 
           $expand: "sensor,network_type,user",
-          $filter: `sensor_id eq ${this.sensor1Id}`,
+          $filter: `sensor_id eq ${sensorId}`,
           $orderby: `created_at desc`
         }
       })
+    },
+
+    async loadBinStatus() {
+      // TDB: Make the second call as well
+      this.markers.push(this.center);
+      await this.readSensorData(this.sensor1Id)
       .then(response => {
         this.data = response.data.value[0];
-        console.log(response.data.value[0]);
 
         if (this.data.latitude === 0 && this.data.longitude === 0) {
           this.loadMarkers();
@@ -257,10 +285,9 @@ export default {
         }
 
         this.loadMap();
-      })
-      .catch(error => console.log(error));
+      }).catch(error => console.log(error));
     }
-  }
+  },
 }
 </script>
 
@@ -322,4 +349,8 @@ export default {
 		width: 20%;
 		text-align: center;
 	}
+
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
 </style>
