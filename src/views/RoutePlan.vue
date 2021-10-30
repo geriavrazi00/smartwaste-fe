@@ -257,24 +257,26 @@ export default {
         // ?distributions=${distributions.join(';')}
     },
 
-    async readSensorData(sensorId) {
+    async readSensorData() {
       return this.axios
-      .get('/odata/SensorDiagnostic', {
-        params: {
-          $top: 1, 
-          $skip: 0,
-          $inlinecount: "allpages", 
-          $expand: "sensor,network_type,user",
-          $filter: `sensor_id eq ${sensorId}`,
-          $orderby: `created_at desc`
-        }
-      })
+      .get('/sensor1', 
+      // {
+      //   params: {
+      //     $top: 1, 
+      //     $skip: 0,
+      //     $inlinecount: "allpages", 
+      //     $expand: "sensor,network_type,user",
+      //     $filter: `sensor_id eq ${sensorId}`,
+      //     $orderby: `created_at desc`
+      //   }
+      // }
+      )
     },
 
     async loadBinStatus() {
       // TDB: Make the second call as well
       this.markers.push(this.center);
-      await this.readSensorData(this.sensor1Id)
+      await this.readSensorData()
       .then(response => {
         this.data = response.data.value[0];
 
