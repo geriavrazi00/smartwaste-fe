@@ -28,12 +28,12 @@ export default {
       markers: [],
       center: [19.8187, 41.3275],
       defaultLocations: [
-        [19.800412, 41.312526], // Geri
-        [19.815143, 41.303895] // Albi
+        [19.800401, 41.312528], // Geri
+        [19.815211, 41.303892] // Albi
       ],
       mapCenter: [19.8244686, 41.3131335],
       zoom: 13,
-      data: null,
+      data: [],
       mapData: {
         distance: 0,
         duration: 0,
@@ -49,7 +49,7 @@ export default {
           // }
         ]
       },
-      binMaxDepth: 255
+      binMaxDepth: 100
     }
   },
   mounted() {
@@ -61,12 +61,6 @@ export default {
         const element = this.defaultLocations[index];
         this.markers.push(element);
       }
-
-      // this.markers = this.markers.push(this.defaultLocations);
-      // this.markers.push([ 19.807579, 41.32755  ]);
-      // this.markers.push([ 19.811430, 41.321666 ]);
-      // this.markers.push([ 19.802093, 41.328626 ]);
-      // this.markers.push([ 19.824447, 41.328495 ]);
     },
 
     async loadMapData() {
@@ -77,11 +71,21 @@ export default {
       // Build an object with the data
       this.mapData.distance = data.trips[0].distance;
       this.mapData.duration = data.trips[0].duration;
-      
+
       for (let i = 0; i < data.waypoints.length; i++) {
         let mapDataObj = {};
         mapDataObj.location = data.waypoints[i].location;
         mapDataObj.name = data.waypoints[i].name;
+
+        let sensor = this.data.filter(function (el) {
+          return el.longitude === mapDataObj.location[0] &&
+            el.latitude === mapDataObj.location[1]
+        });
+
+        if (sensor.length > 0) {
+          let value = (sensor[0].sensor_leftdown + sensor[0].sensor_leftup + sensor[0].sensor_rightdown + sensor[0].sensor_rightup) / 4;
+          mapDataObj.value = ((this.binMaxDepth - value) * 100 / this.binMaxDepth).toFixed(2);
+        }
 
         this.mapData.trips.push(mapDataObj);
       }
@@ -90,9 +94,6 @@ export default {
         this.mapData.trips[i].distance = data.trips[0].legs[i].distance * 0.001;
         this.mapData.trips[i].duration = data.trips[0].legs[i].duration * 0.0166667;
         this.mapData.trips[i].summary = data.trips[0].legs[i].summary;
-
-        let value = (this.data.sensor_leftdown + this.data.sensor_leftup + this.data.sensor_rightdown + this.data.sensor_rightup) / 4;
-        this.mapData.trips[i].value = ((this.binMaxDepth - value) * 100 / this.binMaxDepth).toFixed(2);
 
         if (this.mapData.trips[i].value <= 50) {
           this.mapData.trips[i].color = "#37CEB7";
@@ -253,41 +254,47 @@ export default {
         + `&geometries=geojson`
         + `&source=first`
         + `&access_token=${this.accessToken}`;
-
-        // ?distributions=${distributions.join(';')}
     },
 
-    async readSensorData() {
-      return this.axios
-      .get('/sensor1', 
-      // {
-      //   params: {
-      //     $top: 1, 
-      //     $skip: 0,
-      //     $inlinecount: "allpages", 
-      //     $expand: "sensor,network_type,user",
-      //     $filter: `sensor_id eq ${sensorId}`,
-      //     $orderby: `created_at desc`
-      //   }
-      // }
-      )
+    async readSensorData(url) {
+      return this.axios.get(url);
     },
 
     async loadBinStatus() {
       // TDB: Make the second call as well
       this.markers.push(this.center);
-      await this.readSensorData()
-      .then(response => {
-        this.data = response.data.value[0];
 
-        if (this.data.latitude === 0 && this.data.longitude === 0) {
-          this.loadMarkers();
+      const firstSensorData = await this.readSensorData('/sensor1').then(response => {
+        return response.data.value[0];
+      }).catch(error => console.log(error));
+
+      const secondSensorData = await this.readSensorData('/sensor2').then(response => {
+        return response.data.value[0];
+      }).catch(error => console.log(error));
+
+      this.data.push(firstSensorData);
+      this.data.push(secondSensorData);
+
+      if (this.data) {
+        if (this.data[0].latitude === 0 && this.data[0].longitude === 0) {
+          this.data[0].latitude = this.defaultLocations[1][1];
+          this.data[0].longitude = this.defaultLocations[1][0];
+          this.markers.push(this.defaultLocations[1]);
         } else {
-          this.markers.push([ this.data.longitude, this.data.latitude ]);
+          this.markers.push([ this.data[0].longitude, this.data[0].latitude ]);
+        }
+
+        if (this.data[1].latitude === 0 && this.data[1].longitude === 0) {
+          this.data[1].latitude = this.defaultLocations[0][1];
+          this.data[1].longitude = this.defaultLocations[0][0];
+
+          this.markers.push(this.defaultLocations[0]);
+        } else {
+          this.markers.push([ this.data[1].longitude, this.data[1].latitude ]);
         }
 
         this.loadMap();
-      }).catch(error => console.log(error));
+      }
     }
   },
 }
