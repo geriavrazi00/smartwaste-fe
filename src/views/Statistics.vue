@@ -211,7 +211,7 @@
 				},
 				barChart: {
 					series: [{
-						name: "Mbushur",
+						name: this.$t('filled'),
             data: ['86%', '80%', '13%', '75%', '53%']
           }],
           chartOptions: {

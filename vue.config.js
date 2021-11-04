@@ -1,7 +1,7 @@
 module.exports = {
   pluginOptions: {
     i18n: {
-      locale: 'sq',
+      locale: 'en',
       fallbackLocale: 'en',
       localeDir: 'locales',
       enableLegacy: true,

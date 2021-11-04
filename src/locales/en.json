@@ -1,6 +1,6 @@
 {
   "message": "hello i18n !!",
-	"hello": "Përshëndetje!",
+	"hello": "Hello!",
 	"auth": {
 		"field-completion-label": "Please enter your e-mail and password!",
 		"login": "Login",
@@ -68,5 +68,6 @@
 		"number_of_okay_status_bins": "Number of okay status bins",
 		"number_of_good_status_bins": "Number of good status bins" 
 	},
-	"bin_state_by_area": "Bin state by area"
+	"bin_state_by_area": "Bin state by area",
+	"filled": "Filled"
 }

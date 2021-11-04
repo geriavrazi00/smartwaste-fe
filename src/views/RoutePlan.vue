@@ -136,7 +136,7 @@ export default {
           // create the popup
           const popup = new mapboxgl.Popup({ offset: [0, -5], closeOnClick: false, closeButton: false }).setHTML(
             '<span style="font-weight: bold; font-size: 12px;">' + this.mapData.trips[i].name + '</span><br/>'
-            + '<span style="font-weight: bold;">Mbushur: </span>' + this.mapData.trips[i].value + '%'
+            + '<span style="font-weight: bold;">' + this.$t('filled') + ': </span>' + this.mapData.trips[i].value + '%'
           );
 
           new mapboxgl.Marker(dumpster)
