@@ -91,7 +91,8 @@ export default {
 
         if (sensor.length > 0) {
           let value = (sensor[0].sensor_leftdown + sensor[0].sensor_leftup + sensor[0].sensor_rightdown + sensor[0].sensor_rightup) / 4;
-          mapDataObj.value = ((this.binMaxDepth - value) * 100 / this.binMaxDepth).toFixed(2);
+          let result = ((this.binMaxDepth - value) * 100 / this.binMaxDepth).toFixed(2);
+          mapDataObj.value = result > 0 ? result : 0;
         }
 
         this.mapData.trips.push(mapDataObj);

@@ -5,7 +5,7 @@
 			<h2>{{roadContainer.street}}</h2>
 
 			<div v-for="(data, index) of roadContainer.values" :key="index" class="road-statistics-row">
-				<div class="road-statistics-label">{{data.label}}</div>
+				<div class="road-statistics-label" :title="data.label">{{data.label}}</div>
 				<div class="road-statistics-bar">
 					<div class="road-statistics-value-bar" :style="{ width: data.value, }"></div>
 				</div>
@@ -20,31 +20,31 @@
 			
 			<div class="col-xl-6 row" style="padding: 0px; height: fit-content;">
 				<div id="radial-bar-1" class="col-xl-6">
-					<apexchart type="radialBar" height="200" :options="radialBar1.chartOptions" :series="radialBar1.series"></apexchart>
+					<apexchart type="radialBar" height="155" :options="radialBar1.chartOptions" :series="radialBar1.series"></apexchart>
 				</div>
 				<div id="radial-bar-2" class="col-xl-6">
-					<apexchart type="radialBar" height="200" :options="radialBar2.chartOptions" :series="radialBar2.series"></apexchart>
+					<apexchart type="radialBar" height="155" :options="radialBar2.chartOptions" :series="radialBar2.series"></apexchart>
 				</div>
 
 				<hr style="border: 3px solid #E6F5FB; opacity: 0.5;"/>
 
 				<div class="col-3">
-					<h1 style="margin: 0;">45%</h1>
+					<h1 style="margin: 0;" class="statistic-numbers">45%</h1>
 					<p style="font-size: 12px;">{{ $t('statistics.daily_activity') }}</p>
 				</div>
 
 				<div class="col-3">
-					<h1 style="margin: 0;">25%</h1>
+					<h1 style="margin: 0;" class="statistic-numbers">25%</h1>
 					<p style="font-size: 12px;">{{ $t('statistics.monthly_activity') }}</p>
 				</div>
 
 				<div class="col-3">
-					<h1 style="margin: 0;">64%</h1>
+					<h1 style="margin: 0;" class="statistic-numbers">64%</h1>
 					<p style="font-size: 12px;">{{ $t('statistics.trimester') }}</p>
 				</div>
 
 				<div class="col-3">
-					<h1 style="margin: 0;">80%</h1>
+					<h1 style="margin: 0;" class="statistic-numbers">80%</h1>
 					<p style="font-size: 12px;">{{ $t('statistics.yearly_activity') }}</p>
 				</div>
 			</div>
@@ -147,7 +147,7 @@
 								offsetX: 0,
 								offsetY: 0,
 								hollow: {
-									size: '70%',
+									size: '60%',
 									background: 'transparent',
 									position: 'front',
 								},
@@ -184,7 +184,7 @@
 								offsetX: 0,
 								offsetY: 0,
 								hollow: {
-									size: '70%',
+									size: '60%',
 									background: 'transparent',
 									position: 'front',
 								},
@@ -250,7 +250,7 @@
           },
 				},
 				accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
-				center: [19.8244686, 41.3131335],
+				center: [19.8184686, 41.3131335],
 				zoom: 12,
 				defaultLocations: [
 					[19.800401, 41.312528], // Geri
@@ -329,6 +329,9 @@
 
 	.road-statistics-label {
 		width: 33.33%;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.road-statistics-value {
@@ -381,6 +384,12 @@
 	@media screen and (max-width: 1200px) {
 		.small-map {
 			margin-top: 20px;
+		}
+	}
+
+	@media screen and (max-width: 1300px) {
+		.statistic-numbers {
+			font-size: 2rem;
 		}
 	}
 	
