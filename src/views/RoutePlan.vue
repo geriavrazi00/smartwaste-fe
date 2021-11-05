@@ -16,7 +16,7 @@
       </div>
 
       <div class="reload-btn-container">
-        <button class="custom-btn" v-on:click="loadBinStatus">{{ $t('reload') }}</button>
+        <button class="custom-btn" v-on:click="loadBinStatus" :disabled="disabledBtn">{{ $t('reload') }}</button>
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@ export default {
       binMaxDepth: 24,
       loading: false,
       color: '#37CEB7',
+      disabledBtn: false
       // size: 20,
     }
   },
@@ -232,6 +233,8 @@ export default {
 
         this.loadRoute(map, data);
       });
+
+      this.disabledBtn = false;
     },
 
     async loadRoute(map, data) {
@@ -273,6 +276,7 @@ export default {
     async loadBinStatus() {
       this.emptyVariables();
       this.loading = true;
+      this.disabledBtn = true;
 
       // TDB: Make the second call as well
       this.markers.push(this.center);
