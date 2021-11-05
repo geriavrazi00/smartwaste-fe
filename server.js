@@ -2,14 +2,13 @@ const express = require('express');
 const serveStatic = require("serve-static")
 const path = require('path');
 const axios = require('axios');
+const history = require('connect-history-api-fallback');
 
 app = express();
+app.use(history());
 app.use(serveStatic(path.join(__dirname, 'dist')));
-const port = process.env.PORT || 3000;
 
-var proxy = require('http-proxy').createProxyServer({
-    host: '/',
-});
+const port = process.env.PORT || 3000;
 
 app.get('/sensor1', function(req, res, next) {
   return axios.get('https://prodadmin.sensoneo.com/odata/SensorDiagnostic?$top=1&$skip=0&$inlinecount=allpages&$expand=sensor, network_type, user&$filter=sensor_id eq 14043&$orderby=created_at desc')
@@ -33,5 +32,5 @@ app.get('/sensor2', function(req, res, next) {
 
 
 app.listen(port, function() {
-    console.log('Listening!');
+  console.log('Listening!');
 });
