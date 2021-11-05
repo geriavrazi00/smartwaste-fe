@@ -250,8 +250,12 @@
           },
 				},
 				accessToken: process.env.VUE_APP_MAPBOX_ACCESS_TOKEN,
-				center: [19.8187, 41.3275],
-				zoom: 13
+				center: [19.8244686, 41.3131335],
+				zoom: 12,
+				defaultLocations: [
+					[19.800401, 41.312528], // Geri
+					[19.815211, 41.303892] // Albi
+				],
 			}
 		},
 		mounted() {
@@ -271,6 +275,24 @@
 				// Add zoom and rotation controls to the map.
 				map.addControl(new mapboxgl.NavigationControl());
 				map.addControl(new mapboxgl.FullscreenControl());
+
+				// Add markers with the respective popups
+				for (let i = 0; i < this.defaultLocations.length; i++) {
+					const dumpster = document.createElement('div');
+					dumpster.classList = 'dumpster';
+
+					// create the popup
+					// const popup = new mapboxgl.Popup({ offset: [0, -5], closeOnClick: false, closeButton: false }).setHTML(
+					//   '<span style="font-weight: bold; font-size: 12px;">' + this.mapData.trips[i].name + '</span><br/>'
+					//   + '<span style="font-weight: bold;">' + this.$t('filled') + ': </span>' + this.mapData.trips[i].value + '%'
+					// );
+
+					new mapboxgl.Marker(dumpster)
+						.setLngLat(this.defaultLocations[i])
+						// .setPopup(popup) // sets a popup on this marker
+						.addTo(map)
+						.togglePopup();
+				}
 			}
 		},
 	}

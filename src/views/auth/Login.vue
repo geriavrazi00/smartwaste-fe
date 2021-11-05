@@ -30,7 +30,7 @@
 
         <br><br>
 
-        <button class="login">{{ $t('auth.login') }}</button>
+        <button class="custom-btn">{{ $t('auth.login') }}</button>
       </div>
 
       <div class="col-md-4 img-container">
@@ -112,30 +112,6 @@ export default {
     font-size: 20px;
     letter-spacing: 0px;
     color: #222222;
-  }
-  .login {
-    background: #37CEB7 0% 0% no-repeat padding-box;
-    box-shadow: 0px 1px 10px #00000029;
-    border-radius: 7px;
-    font-size: 17px;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    width: 148px;
-    border: transparent;
-    padding: 5px;
-    cursor: pointer;
-    transition: all .3s;
-  }
-  .login:hover {
-    box-shadow: 0px 15px 25px -5px rgba(darken(#37CEB7, 40%));
-    transform: scale(1.03)
-  }
-  .login:focus {
-    outline: none;
-  }
-  .login:active {
-    box-shadow: 0px 4px 8px rgba(darken(#37CEB7, 30%));
-    transform: scale(.95);
   }
   .fields {
     font-size: 14px;
