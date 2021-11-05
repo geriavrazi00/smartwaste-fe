@@ -69,5 +69,6 @@
 		"number_of_good_status_bins": "Koshat në gjendje të mirë" 
 	},
 	"bin_state_by_area": "Gjendja e koshave sipas zonës",
-	"filled": "Mbushur"
+	"filled": "Mbushur",
+	"reload": "Ngarko"
 }

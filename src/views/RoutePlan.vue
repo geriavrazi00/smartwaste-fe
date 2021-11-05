@@ -5,13 +5,19 @@
     <div id="data-container" class="data-container">
       <h4 style="color: black;">{{ $t('bin_state_by_area') }}</h4>
 
+      <bounce-loader :loading="loading" :color="color" :size="size" style="text-align: -webkit-center; margin-top: 50px;"></bounce-loader>
+
       <div class="road-statistics-row" v-for="(data, index) of mapData.trips" :key="index">
 				<div class="road-statistics-label" v-if="index != 0">{{ data.name }}</div>
 				<div class="road-statistics-bar" v-if="index != 0">
 					<div class="road-statistics-value-bar" :style="{ width: (data.value ? data.value + '%' : '0px'), backgroundColor: data.color }"></div>
 				</div>
 				<div class="road-statistics-value" v-if="index != 0" :style="{ color: data.color }">{{ (data.value ? data.value : '0') }}%</div>
-			</div>
+      </div>
+
+      <div class="reload-btn-container">
+        <button class="custom-btn" v-on:click="loadBinStatus">{{ $t('reload') }}</button>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +25,7 @@
 <script>
 /* eslint-disable no-undef */
 import * as turf from '@turf/turf'
+import BounceLoader from 'vue-spinner/src/BounceLoader.vue'
 
 export default {
   data () {
@@ -37,23 +44,23 @@ export default {
       mapData: {
         distance: 0,
         duration: 0,
-        trips: [
-          // {
-          //   name: null,
-          //   location: [],
-          //   distance: 0,
-          //   duration: 0,
-          //   summary: 0,
-          //   value: 0,
-          //   color: "#37CEB7"
-          // }
-        ]
+        trips: []
       },
-      binMaxDepth: 100
+      binMaxDepth: 30,
+      loading: false,
+      color: '#37CEB7',
+      // size: 20,
     }
+  },
+  components: {
+    // PulseLoader,
+    // RingLoader,
+    BounceLoader
   },
   mounted() {
     this.loadBinStatus();
+    // setInterval(this.loadBinStatus, 3000);
+    this.loading = false;
   },
   methods: {
     loadMarkers() {
@@ -114,6 +121,8 @@ export default {
       // Create an empty GeoJSON feature collection, which will be used as the data source for the route before users add any new data
       const nothing = turf.featureCollection([]);
       const data = await this.loadMapData();
+
+      this.loading = false;
  
       mapboxgl.accessToken = this.accessToken;
       let map = new mapboxgl.Map({
@@ -261,6 +270,9 @@ export default {
     },
 
     async loadBinStatus() {
+      this.emptyVariables();
+      this.loading = true;
+
       // TDB: Make the second call as well
       this.markers.push(this.center);
 
@@ -295,6 +307,16 @@ export default {
 
         this.loadMap();
       }
+    },
+
+    emptyVariables() {
+      this.markers = [];
+      this.data = [];
+      this.mapData = {
+        distance: 0,
+        duration: 0,
+        trips: []
+      };
     }
   },
 }
@@ -361,5 +383,12 @@ export default {
 
   .mapboxgl-popup {
     max-width: 200px;
+  }
+
+  .reload-btn-container {
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+    right: 15px;
   }
 </style>

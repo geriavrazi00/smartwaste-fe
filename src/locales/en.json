@@ -69,5 +69,6 @@
 		"number_of_good_status_bins": "Number of good status bins" 
 	},
 	"bin_state_by_area": "Bin state by area",
-	"filled": "Filled"
+	"filled": "Filled",
+	"reload": "Reload"
 }
