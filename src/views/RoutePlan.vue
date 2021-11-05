@@ -46,7 +46,7 @@ export default {
         duration: 0,
         trips: []
       },
-      binMaxDepth: 30,
+      binMaxDepth: 24,
       loading: false,
       color: '#37CEB7',
       // size: 20,
